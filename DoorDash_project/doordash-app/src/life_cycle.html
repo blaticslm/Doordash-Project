@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type = "text/babel">
+   function Example() {
+        const[count, setCount] = React.useState(0);
+
+        React.useEffect(() => { //第一次顺序: didmount, 之后did update
+            console.log("I am here")
+            document.title = `You clicked ${count} times`;
+            console.log("I am here as well")
+        },[])
+
+       console.log("Go to return")
+       return (
+           <div>
+               <p>You clicked {count} times</p>
+               <button onClick={() => setCount(count + 1)}>
+                   Click me
+               </button>
+           </div>
+       );
+
+    }
+
+    ReactDOM.render(
+        <Example />,
+        document.getElementById("root")
+    )
+</script>
+
+
+
+</body>
+</html>
